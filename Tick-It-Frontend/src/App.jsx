@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import './App.css'
 import Home from './Components/Home'
+import Shows from './Components/Shows'
 import Nav from './Components/Nav'
 import Upcoming from './Components/Upcoming'
 import FeaturedVenue from './Components/FeaturedVenue'
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}/>
         <Route exact path="/admin/*" element={<Admin />}/>
+        <Route exact path="/shows" element={<Shows />}/>
         <Route exact path="/banddetails" element={<BandDetails />}/>
         <Route exact path="/venuedetails" element={<VenueDetails />}/>
         <Route exact path="/showdetails" element={<ShowDetails />}/>
