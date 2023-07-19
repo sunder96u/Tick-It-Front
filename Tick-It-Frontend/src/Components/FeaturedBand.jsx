@@ -14,8 +14,8 @@ export default function FeaturedBand() {
         getFeaturedBand()
     }, [])
 
-    const venueDetails = (id) => {
-        console.log('Go to the band...')
+    const bandDetails = (id) => {
+        navigate('/banddetails')
     }
 
     return (

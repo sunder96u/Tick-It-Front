@@ -16,7 +16,7 @@ export default function FeaturedVenue() {
     }, [])
 
     const venueDetails = (id) => {
-        console.log('Go to the venue...')
+        navigate('/venuedetails')
     }
 
     return(
