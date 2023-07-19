@@ -9,6 +9,7 @@ import FeaturedBand from './Components/FeaturedBand'
 import BandDetails from './Components/BandDetails'
 import VenueDetails from './Components/VenueDetails'
 import ShowDetails from './Components/ShowDetails'
+import Admin from './Components/Admin'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
     <div className="app">
       <Routes>
         <Route exact path="/" element={<Home />}/>
+        <Route exact path="/admin/*" element={<Admin />}/>
         <Route exact path="/banddetails" element={<BandDetails />}/>
         <Route exact path="/venuedetails" element={<VenueDetails />}/>
         <Route exact path="/showdetails" element={<ShowDetails />}/>

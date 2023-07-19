@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import BandForm from './BandForm'
 import ShowForm from './ShowForm'
 import VenueForm from './VenueForm'
+import Nav from './Nav'
 
 
 
@@ -13,14 +14,14 @@ export default function Admin () {
     const [state, setState] = useState('add')
 
     const navband = () => {
-        navigate('/bandform')
+        navigate('./bandform')
     }
     const navshow = () => {
-        navigate('/showform')
+        navigate('./showform')
     }
 
     const navvenue = () => {
-        navigate('/venueform')
+        navigate('./venueform')
     }
 
     const setAdd = () => {
@@ -38,52 +39,56 @@ export default function Admin () {
 
 
     return (
-        <div className='container'>
-            <div className='row'>
-                <div className='col-4'>
-                    <div className='row'>
-                        <button type='button' className='btn btn-primary' onClick={() => {navband(); setAdd()}}>Add Band</button>
+        <div>
+            <Nav />
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-4'>
+                        <div className='row'>
+                            <button type='button' className='btn btn-primary' onClick={() => {navband(); setAdd()}}>Add Band</button>
+                        </div>
+                        <div className='row'>
+                            <button type='button' className='btn btn-warning' onClick={() => {navband(); setEdit()}}>Edit Band</button>
+                        </div>
+                        <div className='row'>
+                            <button type='button' className='btn btn-danger' onClick={() => {navband(); setDel()}}>Delete Band</button>
+                        </div>
                     </div>
-                    <div className='row'>
-                        <button type='button' className='btn btn-warning' onClick={() => {navband(); setEdit()}}>Edit Band</button>
+                    <div className='col-4'>
+                        <div className='row'>
+                            <button type='button' className='btn btn-primary'  onClick={() => {navshow(); setAdd()}}>Add Show</button>
+                        </div>
+                        <div className='row'>
+                            <button type='button' className='btn btn-warning' onClick={() => {navshow(); setEdit()}}>Edit Show</button>
+                        </div>
+                        <div className='row'>
+                            <button type='button' className='btn btn-danger' onClick={() => {navshow(); setDel()}}>Delete Show</button>
+                        </div>
                     </div>
-                    <div className='row'>
-                        <button type='button' className='btn btn-danger' onClick={() => {navband(); setDel()}}>Delete Band</button>
+                    <div className='col-4'>
+                        <div className='row'>
+                            <button type='button' className='btn btn-primary' onClick={() => {navvenue(); setAdd()}}>Add Venue</button>
+                        </div>
+                        <div className='row'>
+                            <button type='button' className='btn btn-warning' onClick={() => {navvenue(); setEdit()}}>Edit Venue</button>
+                        </div>
+                        <div className='row'>
+                            <button type='button' className='btn btn-danger' onClick={() => {navvenue(); setDel()}}>Delete Venue</button>
+                        </div>
                     </div>
                 </div>
-                <div className='col-4'>
-                    <div className='row'>
-                        <button type='button' className='btn btn-primary'  onClick={() => {navshow(); setAdd()}}>Add Show</button>
+                <div className='row'>
+                    <div className='container'>
+                        <Routes>
+                            <Route path='/bandform' element={<BandForm state={state}/>} />
+                            <Route path='/showform' element={<ShowForm state={state}/>} />
+                            <Route path='/venueform' element={<VenueForm state={state}/>} />
+                        </Routes>
                     </div>
-                    <div className='row'>
-                        <button type='button' className='btn btn-warning' onClick={() => {navshow(); setEdit()}}>Edit Show</button>
-                    </div>
-                    <div className='row'>
-                        <button type='button' className='btn btn-danger' onClick={() => {navshow(); setDel()}}>Delete Show</button>
-                    </div>
-                </div>
-                <div className='col-4'>
-                    <div className='row'>
-                        <button type='button' className='btn btn-primary' onClick={() => {navvenue(); setAdd()}}>Add Venue</button>
-                    </div>
-                    <div className='row'>
-                        <button type='button' className='btn btn-warning' onClick={() => {navvenue(); setEdit()}}>Edit Venue</button>
-                    </div>
-                    <div className='row'>
-                        <button type='button' className='btn btn-danger' onClick={() => {navvenue(); setDel()}}>Delete Venue</button>
-                    </div>
-                </div>
-            </div>
-            <div className='row'>
-                <div className='container'>
-                    <Routes>
-                        <Route path='/bandform' element={<BandForm state={state}/>} />
-                        <Route path='/showform' element={<ShowForm state={state}/>} />
-                        <Route path='/venueform' element={<VenueForm state={state}/>} />
-                    </Routes>
                 </div>
             </div>
         </div>
+
 
     )
 }
