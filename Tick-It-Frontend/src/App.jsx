@@ -6,15 +6,20 @@ import FeaturedVenue from './Components/FeaturedVenue'
 import FeaturedBand from './Components/FeaturedBand'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="app">
       <Nav />
       <Upcoming />
-      <div className="app-featured">
-        <FeaturedVenue />
-        <FeaturedBand />
+      <div className="container-fluid">
+        <div className="row align-items-center">
+          <div className="col-6">
+            <FeaturedVenue />
+          </div>
+          <div className="col-6">
+            <FeaturedBand />
+          </div>
+        </div>
       </div>
     </div>
   )
