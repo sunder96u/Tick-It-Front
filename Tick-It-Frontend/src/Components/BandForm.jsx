@@ -1,7 +1,27 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 export default function BandForm ({state}) {
     console.log(state)
+    const BASE_URL = "https://tick-it-back-production.up.railway.app/"
+
+    const [name, setName] = useState('')
+    const [genre, setGenre] = useState('')
+    const [logo, setLogo] = useState('')
+
+    const bandData = {
+        name,
+        genre,
+        logo
+    }
+
+
+
+    const handleSubmitBand = (e) => {
+        e.preventDefault()
+        axios.post('https://tick-it-back-production.up.railway.app/bands/', bandData)  
+        console.log(bandData)
+    }
 
     let button
     if (state == 'del') {
@@ -29,18 +49,18 @@ export default function BandForm ({state}) {
     return (
     <div >
         {head}
-        <form>
+        <form onSubmit={handleSubmitBand}>
             <div className='mb-3'>
                 <label htmlFor="name" className='form-label'>Name</label>
-                <input type='text' className='form-control' placeholder='Band Name' id='name'></input>
+                <input type='text' className='form-control' placeholder='Band Name' id='name' onChange={(e) => setName(e.target.value)}></input>
             </div>
             <div className='mb-3'>
                 <label htmlFor='genre' className='form-label'>Genre</label>
-                <input type='text' className='form-control' placeholder='Genre' id='genre'></input>
+                <input type='text' className='form-control' placeholder='Genre' id='genre' onChange={(e) => setGenre(e.target.value)}></input>
             </div>
             <div className='mb-3'>
                 <label htmlFor='logo' className='form-label'>Logo</label>
-                <input type='file' className='form-control' placeholder='Band Logo' id='logo'></input>
+                <input type='file' className='form-control' placeholder='Band Logo' id='logo' onChange={(e) => setLogo(e.target.value)}></input>
             </div>
             <div className='mb-3'>
                 {button}
