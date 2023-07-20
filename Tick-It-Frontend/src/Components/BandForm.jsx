@@ -19,7 +19,7 @@ export default function BandForm ({state}) {
 
     const handleSubmitBand = (e) => {
         e.preventDefault()
-        axios.post('https://tick-it-back-production.up.railway.app/bands/', bandData)  
+        axios.post('http://localhost:8000/bands/', bandData)  
         console.log(bandData)
     }
 
