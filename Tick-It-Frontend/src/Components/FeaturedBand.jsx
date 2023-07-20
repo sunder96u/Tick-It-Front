@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function FeaturedBand() {
     const navigate = useNavigate()
@@ -8,14 +9,14 @@ export default function FeaturedBand() {
 
     useEffect(() => {
         const getFeaturedBand = async () => {
-            const response = await axios.get()
+            const response = await axios.get(`https://tick-it-back-production.up.railway.app/bands/3`)
             setFeaturedBand(response.data)
         }
         getFeaturedBand()
     }, [])
 
     const bandDetails = (id) => {
-        navigate('/banddetails')
+        navigate(`/bands/${id}`)
     }
 
     return (
@@ -24,11 +25,11 @@ export default function FeaturedBand() {
                 <h1>Featured Band</h1>
             </div>
             <div className="card d-flex align-items-center justify-content-center">
-                <img src="..." class="card-img-top" alt="..."/>
+                <img src={featuredBand.logo} class="card-img-top" alt="Band Logo"/>
                 <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary" onClick={() => bandDetails()}>Show Details</a>
+                    <h5 className="card-title">{featuredBand.name}</h5>
+                    <p className="card-text">{featuredBand.genre}</p>
+                    <button className="btn btn-primary" onClick={() => bandDetails(featuredBand.band_id)}>Band Details</button>
                 </div>
             </div>
         </div>

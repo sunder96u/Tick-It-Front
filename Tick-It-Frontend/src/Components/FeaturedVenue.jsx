@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 export default function FeaturedVenue() {
@@ -9,14 +10,14 @@ export default function FeaturedVenue() {
 
     useEffect(() => {
         const getFeaturedVenue = async () => {
-            const response = await axios.get()
+            const response = await axios.get(`https://tick-it-back-production.up.railway.app/venues/3`)
             setFeaturedVenue(response.data)
         }
         getFeaturedVenue()
     }, [])
 
     const venueDetails = (id) => {
-        navigate('/venuedetails')
+        navigate(`/venues/${id}`)
     }
 
     return(
@@ -25,11 +26,11 @@ export default function FeaturedVenue() {
                 <h1>Featured Venue</h1>
             </div>
             <div className="card d-flex align-items-center justify-content-center">
-                <img src="..." className="card-img-top" alt="..."/>
+                <img src={featuredVenue.venue_photo} className="card-img-top" alt="..."/>
                 <div className="card-body">
-                    <h5 className="card-title">Card Title</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="btn btn-primary" onClick={() => venueDetails()}>Show Details</a>
+                    <h5 className="card-title">{featuredVenue.name}</h5>
+                    <p className="card-text">{featuredVenue.address}</p>
+                    <button className="btn btn-primary" onClick={() => venueDetails(featuredVenue.venue_id)}>Venue Details</button>
                 </div>
             </div>
         </div>
