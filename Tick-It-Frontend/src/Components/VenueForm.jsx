@@ -1,5 +1,16 @@
+import axios from 'axios'
+
+
 export default function BandForm ({state}) {
     console.log(state)
+
+    const getVenues = async () => {
+        const venues = await axios.get('https://tick-it-back-production.up.railway.app/venues/')
+        console.log(venues)
+    }
+
+    getVenues()
+
 
     let button
     if (state == 'del') {
