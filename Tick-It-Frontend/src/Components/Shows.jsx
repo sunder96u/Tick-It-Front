@@ -1,12 +1,23 @@
 import Nav from './Nav'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Shows() {
 
     const navigate = useNavigate()
+    const [shows, setShows] = useState([])
 
-    const showDetails = () => {
-        navigate('/showdetails')
+    useEffect(() => {
+        const getShows = async () => {
+            const response = await axios.get(`https://tick-it-back-production.up.railway.app/shows/`)
+            setShows(response.data)
+        }
+        getShows()
+    }, [])
+
+    const showDetails = (key) => {
+        navigate(`${key}`)
     }
 
     return(
@@ -16,14 +27,16 @@ export default function Shows() {
                 <h1 className="fs-1">Shows</h1>
             </div>
             <div className="container text-center w-75">
-                <div className="card d-flex justify-content-center align-items-center p-5">
-                    <img src="..." className="card-img-top mb-3" alt="..."/>
+                {shows.map((show, index) => 
+                <div className="card d-flex justify-content-center align-items-center p-5" key={index}>
+                    <img src={show.poster} className="card-img-top mb-3" alt="Show Poster"/>
                     <div className="card-body">
-                        <h5 className="card-title mb-4">Card title</h5>
-                        <p className="card-text mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary" onClick={() => showDetails()}>Show Details</a>
+                        <h5 className="card-title mb-4">{show.title}</h5>
+                        <p className="card-text mb-4">Time: {show.time}</p>
+                        <p className="card-text mb-4">Price: ${show.starting_price}</p>
+                        <button className="btn btn-primary" onClick={() => showDetails(show.show_id)}>Show Details</button>
                     </div>
-                </div>
+                </div>)}
             </div>
         </div>
     )
