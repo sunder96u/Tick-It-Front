@@ -9,14 +9,15 @@ export default function FeaturedBand() {
 
     useEffect(() => {
         const getFeaturedBand = async () => {
-            const response = await axios.get(`https://tick-it-back-production.up.railway.app/bands/3`)
+            const response = await axios.get(`https://tick-it-back-production.up.railway.app/bands/1`)
             setFeaturedBand(response.data)
         }
         getFeaturedBand()
     }, [])
 
     const bandDetails = (id) => {
-        navigate(`/bands/${id}`)
+        let numberId = parseInt(id) - 1
+        navigate(`/bands/${numberId}`)
     }
 
     return (

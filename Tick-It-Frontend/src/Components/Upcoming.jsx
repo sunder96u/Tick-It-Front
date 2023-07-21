@@ -10,14 +10,14 @@ export default function Upcoming() {
 
     useEffect(() => {
         const getUpcoming = async () => {
-            const response = await axios.get()
+            const response = await axios.get(`https://tick-it-back-production.up.railway.app/shows/`)
             setUpcoming(response.data)
         }
         getUpcoming()
     }, [])
 
     const showDetails = (id) => {
-        navigate(`/showdetails/{id}`)
+        navigate(`/shows/${id}`)
     }
 
     if (upcoming.length === 0) {
@@ -28,13 +28,13 @@ export default function Upcoming() {
     else {
         return(
             <div className='upcoming-container'>
-                <div className='row'>
+                <div className='row text-center my-4'>
                     <h1>Upcoming Events:</h1>
                 </div>
-                <div className='row'>
-                    {shows.map((show, index) =>
-                        <div className='col' key={index}>
-                            <img src={show.poster.url} alt="show.name" onClick={() => showDetails(show.id)} />
+                <div className='row mx-4 my-4'>
+                    {upcoming.map((show, index) =>
+                        <div className='col d-flex justify-content-center align-items-center border border-2 rounded mx-4 py-2 upcoming-image' key={index}>
+                            <img src={show.poster} alt="show.name" className="h-100 w-100"onClick={() => showDetails(show.show_id)} />
                         </div>
                     )}
                 </div>

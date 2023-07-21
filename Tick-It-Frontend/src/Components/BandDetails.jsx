@@ -8,8 +8,6 @@ export default function BandDetails() {
     const [band, setBand] = useState()
     let key = useParams()
 
-    console.log(key)
-
     useEffect(() => {
         const getBand = async() => {
             const response = await axios.get(`https://tick-it-back-production.up.railway.app/bands/${key.id}`)
@@ -18,7 +16,7 @@ export default function BandDetails() {
         getBand()
     }, [])
 
-    return(
+    return band ? (
         <div>
             <Nav />
             <div className="container d-flex flex-column align-items-center justify-content-center my-5">
@@ -36,5 +34,7 @@ export default function BandDetails() {
                 </div>
             </div>    
         </div>
+    ) : (
+        <h1>Loading...</h1>
     )
 }

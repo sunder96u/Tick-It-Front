@@ -11,12 +11,14 @@ export default function VenueDetails() {
     useEffect(() => {
         const getVenue = async () => {
             const response = await axios.get(`https://tick-it-back-production.up.railway.app/venues/${id.id}`)
+            console.log(response)
             setVenue(response.data)
         }
         getVenue()
     }, [])
 
-    return(
+
+    return venue ? (
         <div className="container-fluid px-0">
             <Nav />
             <div className="container d-flex flex-column align-items-center justify-content-center my-5">
@@ -58,5 +60,7 @@ export default function VenueDetails() {
                 </div>
             </div>
         </div>
+    ) : (
+        <h1>Loading...</h1>
     )
 }
