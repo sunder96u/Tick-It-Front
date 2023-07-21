@@ -26,7 +26,7 @@ export default function FeaturedVenue() {
                 <h1>Featured Venue</h1>
             </div>
             <div className="card d-flex align-items-center justify-content-center">
-                <img src={featuredVenue.venue_photo} className="card-img-top" alt="..."/>
+                <img src={featuredVenue.venue_photo} className="card-img-top w-75 mt-3" alt="..."/>
                 <div className="card-body">
                     <h5 className="card-title">{featuredVenue.name}</h5>
                     <p className="card-text">{featuredVenue.address}</p>
