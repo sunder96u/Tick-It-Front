@@ -7,6 +7,8 @@ export default function Nav() {
                 <div className="col-4 d-flex justify-content-evenly">
                     <Link to="/" className="btn btn-dark">Home</Link>
                     <Link to="/shows" className="btn btn-dark">Shows</Link>
+                    <Link to="/bands" className="btn btn-dark">Bands</Link>
+                    <Link to="/venues" className="btn btn-dark">Venues</Link>
                 </div>
                 <div className="col-4 d-flex justify-content-center">
                     <Link to="/admin" className="navbar-brand fs-2">Tick-It</Link>
