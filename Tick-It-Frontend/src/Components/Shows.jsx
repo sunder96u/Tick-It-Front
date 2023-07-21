@@ -24,11 +24,11 @@ export default function Shows() {
         <div>
             <Nav />
             <div className="container-fluid my-5 d-flex flex-column justify-content-center align-items-center">
-                <h1 className="fs-1">Shows</h1>
+                <h1 className="fs-1 show-title">Shows</h1>
             </div>
             <div className="container text-center w-75">
                 {shows.map((show, index) => 
-                <div className="card d-flex justify-content-center align-items-center p-5" key={index}>
+                <div className="card d-flex justify-content-center align-items-center p-5 show-card mb-4" key={index}>
                     <img src={show.poster} className="card-img-top mb-3" alt="Show Poster"/>
                     <div className="card-body">
                         <h5 className="card-title mb-4">{show.title}</h5>

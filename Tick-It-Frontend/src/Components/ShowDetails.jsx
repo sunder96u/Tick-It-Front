@@ -9,8 +9,6 @@ export default function ShowDetails() {
     let key = useParams()
     const navigate = useNavigate()
 
-    console.log(key)
-
     useEffect(() => {
         const getShow = async () => {
             const response = await axios.get(`https://tick-it-back-production.up.railway.app/shows/${key.id}`)
@@ -22,7 +20,7 @@ export default function ShowDetails() {
     return show ? (
         <div>
             <Nav />
-            <div className="container d-flex flex-column align-items-center justify-content-center my-5">
+            <div className="container d-flex flex-column align-items-center justify-content-center my-5 show-details">
                 <h1>{show.title}</h1>
                 <img src={show.poster} alt="poster" className="my-5"/>
                 <div className="container text-center w-50">
@@ -61,5 +59,7 @@ export default function ShowDetails() {
                     </div>
                 </div>
             </div>
-    ) : <h1>Finding Data...</h1>
+    ) : <div className="text-center">
+            <h1>Wow, This is taking a while!</h1>
+        </div>
 }

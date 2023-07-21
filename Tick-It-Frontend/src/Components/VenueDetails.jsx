@@ -21,7 +21,7 @@ export default function VenueDetails() {
     return venue ? (
         <div className="container-fluid px-0">
             <Nav />
-            <div className="container d-flex flex-column align-items-center justify-content-center my-5">
+            <div className="container d-flex flex-column align-items-center justify-content-center my-5 venue-details">
                 <h1>{venue.name}</h1>
                 <img src={venue.venue_photo} alt="venue_photo" className="my-5"/>
                 <div className="container text-center w-50">
@@ -61,6 +61,8 @@ export default function VenueDetails() {
             </div>
         </div>
     ) : (
-        <h1>Loading...</h1>
+        <div className="text-center">
+            <h1>Wow, This is taking a while!</h1>
+        </div>
     )
 }
