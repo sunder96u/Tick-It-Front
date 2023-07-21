@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 
@@ -11,6 +12,25 @@ export default function BandForm ({state}) {
 
     getVenues()
 
+    const [name, setName] = useState('')
+    const [genre, setGenre] = useState('')
+    const [logo, setLogo] = useState('')
+
+    const bandData = {
+        venue_id: 2,
+        name: 'something',
+        address: 'something',
+        capacity: 100000,
+        type: 'outdoor',
+        contact: "something",
+        venue_photo:"C:\\fakepath\\FIR-Poster.jpeg"
+    }
+
+    const handleSubmitVenue = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:8000/venues/',bandData).then(res => alert('submitted'))
+        console.log(bandData)
+    }
 
     let button
     if (state == 'del') {
@@ -38,7 +58,7 @@ export default function BandForm ({state}) {
     return (
         <div>
             {head}
-            <form>
+            <form onSubmit={handleSubmitVenue}>
                 <div className='mb-3'>
                     <label htmlFor="name" className='form-label'>Name</label>
                     <input type='text' className='form-control' placeholder='Venue Name' id='name'></input>
@@ -60,8 +80,8 @@ export default function BandForm ({state}) {
                     <input type='text' className='form-control' placeholder='Phone number or email' id='contact'></input>
                 </div>
                 <div className='mb-3'>
-                    <label htmlFor='pic' className='form-label'>Venue Picture</label>
-                    <input type='file' className='form-control' placeholder='Venue Picture' id='pic'></input>
+                    <label htmlFor='pic' className='form-label'>Venue Picture URL Link</label>
+                    <input type='text' className='form-control' placeholder='Venue Picture' id='pic'></input>
                 </div>
                 <div className='mb-3'>
                     {button}

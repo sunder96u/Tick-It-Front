@@ -40,8 +40,8 @@ export default function BandForm ({state}) {
                     <input type='text' className='form-control' placeholder='Starting Price' id='startingPrice'></input>
                 </div>
                 <div className='mb-3'>
-                    <label htmlFor='poster' className='form-label'>Poster</label>
-                    <input type='file' className='form-control' placeholder='Show Poster' id='poster'></input>
+                    <label htmlFor='poster' className='form-label'>Poster URL Link</label>
+                    <input type='text' className='form-control' placeholder='Show Poster' id='poster'></input>
                 </div>
                 <div className='mb-3'>
                     {button}
