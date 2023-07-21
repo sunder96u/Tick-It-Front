@@ -21,7 +21,7 @@ export default function FeaturedBand() {
     }
 
     return (
-        <div className='container-fluid w-50'>
+        <div className='container-fluid w-50 featured-band-container'>
             <div className="text-center">
                 <h1>Featured Band</h1>
             </div>

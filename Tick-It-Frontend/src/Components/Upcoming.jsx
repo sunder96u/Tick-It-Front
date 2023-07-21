@@ -22,16 +22,18 @@ export default function Upcoming() {
 
     if (upcoming.length === 0) {
         return (
-            <h1>Wow, This is taking a while!</h1>
+            <div className="text-center">
+                <h1>Wow, This is taking a while!</h1>
+            </div>
         )
     }
     else {
         return(
             <div className='upcoming-container'>
-                <div className='row text-center my-4'>
+                <div className='row text-center my-4 upcoming-title'>
                     <h1>Upcoming Events:</h1>
                 </div>
-                <div className='row mx-4 my-4'>
+                <div className='row mx-4 my-4 upcoming-posters'>
                     {upcoming.map((show, index) =>
                         <div className='col d-flex justify-content-center align-items-center border border-2 rounded mx-4 py-2 upcoming-image' key={index}>
                             <img src={show.poster} alt="show.name" className="h-100 w-100"onClick={() => showDetails(show.show_id)} />

@@ -21,7 +21,7 @@ export default function FeaturedVenue() {
     }
 
     return(
-        <div className='container-fluid w-50'>
+        <div className='container-fluid w-50 featured-venue-container'>
             <div className="text-center">
                 <h1>Featured Venue</h1>
             </div>
